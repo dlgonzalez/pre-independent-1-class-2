@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pre-Independent 1 | Unit 1 – Class 2</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; }
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .glass-panel { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08); }
+        .correct-highlight { background-color: #dcfce7 !important; border-color: #22c55e !important; color: #166534 !important; }
+        .wrong-highlight { background-color: #fee2e2 !important; border-color: #ef4444 !important; color: #991b1b !important; }
+        .sample-answer { background: #f0fdf4; border-left: 4px solid #22c55e; }
+        .toast { position: fixed; bottom: 20px; right: 20px; padding: 15px 25px; border-radius: 8px; color: white; font-weight: bold; opacity: 0; transition: opacity 0.3s, transform 0.3s; transform: translateY(20px); pointer-events: none; z-index: 1000; }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        .toast-success { background-color: #10b981; }
+        .toast-error { background-color: #ef4444; }
+        .toast-info { background-color: #3b82f6; }
+        .transition-box { background: linear-gradient(135deg, #eef2ff, #e0e7ff); border-left: 4px solid #6366f1; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
+        .transition-box h4 { color: #3730a3; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .transition-box p { color: #334155; font-size: 0.9rem; line-height: 1.6; }
+        .instruction-box { background: #fff7ed; border-left: 4px solid #f97316; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; }
+        .instruction-box h4 { color: #9a3412; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .instruction-box ol, .instruction-box ul { color: #334155; font-size: 0.88rem; line-height: 1.7; padding-left: 20px; }
+        
+        /* Custom UI */
+        .category-bucket { min-height: 120px; transition: all 0.2s; }
+        .sortable-item { cursor: pointer; transition: all 0.2s; }
+        .sortable-item:hover { transform: translateY(-2px); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        .timer-active { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-slate-900 text-white shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-y-1/3 -translate-x-1/4"></div>
+        <div class="max-w-7xl mx-auto px-6 py-10 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="flex items-center gap-5">
+                    <div class="h-16 w-16 md:h-20 md:w-20 bg-white/95 rounded-xl p-2 shadow-lg flex items-center justify-center text-3xl">🧠</div>
+                    <div>
+                        <h1 class="text-3xl font-black tracking-tight mb-2 flex items-center">
+                            <i class="fa-solid fa-microchip text-purple-400 mr-3 text-4xl"></i>
+                            Pre-Independent 1
+                        </h1>
+                        <p class="text-slate-300 text-lg font-medium tracking-wide uppercase">Unit 1: Incredible Lives <span class="text-blue-400 mx-2">•</span> Class 2</p>
+                    </div>
+                </div>
+                <div class="bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/10 shadow-xl max-w-md">
+                    <h2 class="text-xl font-bold text-purple-300 mb-3 border-b border-white/20 pb-2">🎯 Today's Mission</h2>
+                    <ul class="text-sm text-slate-100 space-y-2">
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-purple-400 mt-1 mr-2"></i> <strong>Present</strong> and pitch your tech inventions.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-purple-400 mt-1 mr-2"></i> <strong>Expand</strong> vocabulary by mastering 5 Noun Suffixes.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-purple-400 mt-1 mr-2"></i> <strong>Extract</strong> facts and signpost phrases from an audio lecture.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-purple-400 mt-1 mr-2"></i> <strong>Express</strong> past, present, and difficult abilities accurately.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check-circle text-purple-400 mt-1 mr-2"></i> <strong>Interview</strong> a partner about a hard-earned achievement.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex space-x-2 overflow-x-auto py-4 no-scrollbar" id="tab-container">
+                <button onclick="switchTab('tab0')" id="btn-tab0" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 bg-slate-800 text-white shadow-md whitespace-nowrap">0. ⚡ Action or State?</button>
+                <button onclick="switchTab('tab1')" id="btn-tab1" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">1. 🚀 Tech Pitch</button>
+                <button onclick="switchTab('tab2')" id="btn-tab2" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">2. 🧱 Noun Suffixes</button>
+                <button onclick="switchTab('tab3')" id="btn-tab3" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">3. 🎧 Amazing Minds</button>
+                <button onclick="switchTab('tab4')" id="btn-tab4" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">4. 🧩 Expressing Ability</button>
+                <button onclick="switchTab('tab5')" id="btn-tab5" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">5. 🎙️ The Podcast</button>
+                <button onclick="switchTab('tab6')" id="btn-tab6" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap">6. 🏁 Wrap-Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+
+        <!-- TAB 0: WARM-UP -->
+        <section id="tab0" class="tab-content active fade-in">
+            <div class="glass-panel p-8 rounded-3xl">
+                <div class="transition-box">
+                    <h4><i class="fa-solid fa-bolt"></i> Warm-Up: State or Action?</h4>
+                    <p>Welcome back! In our last class, we learned that some verbs are actions (dynamic) and some are states (stative). Let's see how fast you can identify them before we jump into Baamboozle!</p>
+                </div>
+                
+                <div class="instruction-box">
+                    <h4><i class="fa-solid fa-hand-pointer"></i> Instructions</h4>
+                    <ol class="list-decimal">
+                        <li>Look at the verb that appears on the screen.</li>
+                        <li>Click "State" if it describes a feeling, thought, or possession (no -ing).</li>
+                        <li>Click "Action" if it describes a physical activity (can use -ing).</li>
+                        <li>Clear all 15 verbs to unlock the Baamboozle link!</li>
+                    </ol>
+                </div>
+
+                <div class="bg-slate-900 rounded-2xl p-8 shadow-xl text-center max-w-2xl mx-auto border-4 border-slate-800 relative overflow-hidden">
+                    <div class="flex justify-between text-slate-400 font-bold mb-4 text-sm">
+                        <span>Verbs left: <span id="verb-count" class="text-white">15</span></span>
+                        <span>Score: <span id="verb-score" class="text-emerald-400">0</span></span>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-8 shadow-inner min-h-[160px] flex items-center justify-center mb-8 border-2 border-slate-200">
+                        <h3 id="current-verb" class="text-5xl font-black text-slate-800 tracking-tight">Ready?</h3>
+                    </div>
+
+                    <div class="flex gap-4 justify-center" id="verb-buttons">
+                        <button onclick="startVerbGame()" id="verb-start-btn" class="bg-indigo-500 hover:bg-indigo-400 text-white font-bold py-3 px-8 rounded-full text-xl shadow-[0_6px_0_#3730a3] active:translate-y-[6px] active:shadow-none transition-all">START</button>
+                        <button onclick="checkVerb('state')" id="btn-state" class="hidden flex-1 bg-pink-500 hover:bg-pink-400 text-white font-bold py-4 rounded-xl text-xl shadow-[0_6px_0_#be185d] active:translate-y-[6px] active:shadow-none transition-all">🧠 STATE</button>
+                        <button onclick="checkVerb('action')" id="btn-action" class="hidden flex-1 bg-blue-500 hover:bg-blue-400 text-white font-bold py-4 rounded-xl text-xl shadow-[0_6px_0_#1d4ed8] active:translate-y-[6px] active:shadow-none transition-all">🏃 ACTION</button>
+                    </div>
+
+                    <!-- Baamboozle Link Reveal -->
+                    <div id="baamboozle-reveal" class="hidden mt-8 p-6 bg-slate-800 rounded-xl border border-emerald-500">
+                        <h4 class="text-emerald-400 font-bold text-xl mb-2">🎉 Target Reached!</h4>
+                        <p class="text-slate-300 mb-4">Now, let's play in teams to practice these verbs in full sentences.</p>
+                        <a href="https://www.baamboozle.com/game/2164646" target="_blank" class="inline-block bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-black py-3 px-6 rounded-full shadow-lg transition-transform hover:scale-105">
+                            Play Baamboozle Game <i class="fa-solid fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 1: TECH PITCH -->
+        <section id="tab1" class="tab-content fade-in">
+            <div class="glass-panel p-8 rounded-3xl">
+                <div class="transition-box">
+                    <h4><i class="fa-solid fa-microphone"></i> Project Completion: The Tech Pitch</h4>
+                    <p>Last class, you started brainstorming an incredible piece of technology to help solve a specific problem. Today, we finish and present!</p>
+                </div>
+
+                <div class="instruction-box mb-8">
+                    <h4><i class="fa-solid fa-users"></i> Final Prep (10 minutes)</h4>
+                    <ul class="list-disc">
+                        <li>Rejoin your group from last class.</li>
+                        <li>You have exactly 10 minutes to finish your pitch structure.</li>
+                        <li>Make sure everyone has a part to say!</li>
+                        <li>When the timer rings, we pitch to the class.</li>
+                    </ul>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- The Checklist -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+                        <h3 class="font-black text-indigo-900 text-xl mb-4 border-b border-slate-100 pb-2">Your Pitch Must Include:</h3>
+                        
+                        <div class="space-y-4 text-sm text-slate-700 font-medium">
+                            <p class="flex items-center gap-3"><span class="bg-indigo-100 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm">1</span> The specific problem you are solving.</p>
+                            <p class="flex items-center gap-3"><span class="bg-indigo-100 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm">2</span> The name of your device.</p>
+                            <p class="flex items-center gap-3"><span class="bg-indigo-100 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm">3</span> How it works (using dynamic verbs!).</p>
+                            <p class="flex items-center gap-3"><span class="bg-indigo-100 text-indigo-800 w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-sm">4</span> Why it's incredible (using stative verbs like <em>believe, think, know</em>).</p>
+                        </div>
+                    </div>
+
+                    <!-- Timer -->
+                    <div class="bg-slate-900 rounded-2xl p-8 text-center shadow-xl text-white flex flex-col justify-center border-4 border-slate-800">
+                        <h3 class="font-bold text-slate-400 uppercase tracking-widest text-sm mb-4">Final Prep Timer</h3>
+                        <div id="pitch-timer-display" class="text-7xl font-black font-mono tracking-tight mb-6 text-emerald-400">10:00</div>
+                        <div class="flex gap-4 justify-center">
+                            <button onclick="startPitchTimer()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold py-3 px-8 rounded-full transition-transform active:scale-95 shadow-[0_4px_0_#047857]">
+                                START
+                            </button>
+                            <button onclick="resetPitchTimer()" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-8 rounded-full transition-transform active:scale-95">
+                                RESET
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: NOUN SUFFIXES -->
+        <section id="tab2" class="tab-content fade-in">
+            <div class="glass-panel p-8 rounded-3xl">
+                <div class="transition-box">
+                    <h4><i class="fa-solid fa-puzzle-piece"></i> Vocabulary: Building Nouns</h4>
+                    <p>To talk about achievements and abilities professionally, we often turn verbs and adjectives into nouns using specific endings called <strong>suffixes</strong>.</p>
+                </div>
+
+                <!-- Rules Box -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden mb-10">
+                    <div class="bg-slate-900 p-4 text-center">
+                        <h3 class="text-2xl font-black text-white tracking-wide">The 5 Suffix Formulas 🧪</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                        <!-- -ment -->
+                        <div class="p-4 bg-blue-50/50">
+                            <h4 class="font-bold text-blue-900 mb-2 border-b-2 border-blue-200 pb-1">Verb + -ment</h4>
+                            <p class="text-xs text-slate-600 mb-2">Turns an action into a thing.</p>
+                            <div class="bg-white p-2 rounded border border-slate-200 text-xs">develop ➡️ <span class="text-blue-700 font-bold">development</span></div>
+                        </div>
+
+                        <!-- -ness -->
+                        <div class="p-4 bg-pink-50/50">
+                            <h4 class="font-bold text-pink-900 mb-2 border-b-2 border-pink-200 pb-1">Adj + -ness</h4>
+                            <p class="text-xs text-slate-600 mb-2">A state/quality. ('y' to 'i').</p>
+                            <div class="bg-white p-2 rounded border border-slate-200 text-xs">happy ➡️ <span class="text-pink-700 font-bold">happiness</span></div>
+                        </div>
+
+                        <!-- -ity -->
+                        <div class="p-4 bg-purple-50/50">
+                            <h4 class="font-bold text-purple-900 mb-2 border-b-2 border-purple-200 pb-1">Adj + -ity</h4>
+                            <p class="text-xs text-slate-600 mb-2">Notice the stress shift!</p>
+                            <div class="bg-white p-2 rounded border border-slate-200 text-xs">able ➡️ <span class="text-purple-700 font-bold">ability</span></div>
+                        </div>
+
+                        <!-- -tion -->
+                        <div class="p-4 bg-emerald-50/50">
+                            <h4 class="font-bold text-emerald-900 mb-2 border-b-2 border-emerald-200 pb-1">Verb + -tion/-sion</h4>
+                            <p class="text-xs text-slate-600 mb-2">The process of doing an action.</p>
+                            <div class="bg-white p-2 rounded border border-slate-200 text-xs">educate ➡️ <span class="text-emerald-700 font-bold">education</span></div>
+                        </div>
+
+                        <!-- -er/-or -->
+                        <div class="p-4 bg-amber-50/50">
+                            <h4 class="font-bold text-amber-900 mb-2 border-b-2 border-amber-200 pb-1">Verb + -er/-or</h4>
+                            <p class="text-xs text-slate-600 mb-2">A person who does the action.</p>
+                            <div class="bg-white p-2 rounded border border-slate-200 text-xs">teach ➡️ <span class="text-amber-700 font-bold">teacher</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 26 Word Sorting Game -->
+                <h3 class="text-2xl font-black text-indigo-900 mb-4"><i class="fa-solid fa-sort"></i> The 26-Word Suffix Sorter</h3>
+                
+                <div class="instruction-box">
+                    <h4>Instructions</h4>
+                    <ol class="list-decimal">
+                        <li>Click a root word from the Word Bank to select it.</li>
+                        <li>Click the correct Suffix Bucket where it belongs.</li>
+                        <li>Sort all 26 words! Watch out for spelling changes.</li>
+                    </ol>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl shadow border border-slate-200 mb-6 flex justify-between items-center max-w-sm mx-auto">
+                    <span class="font-bold text-slate-700">Words Sorted</span>
+                    <span id="sort-score" class="font-black text-2xl text-indigo-600">0 / 26</span>
+                </div>
+
+                <!-- Word Bank -->
+                <div class="bg-slate-100 p-6 rounded-2xl border border-slate-200 mb-8 min-h-[120px]">
+                    <div id="sort-bank" class="flex flex-wrap gap-2 justify-center">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Buckets -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+                    <div id="bucket-ment" onclick="trySort('-ment')" class="category-bucket bg-white border-2 border-dashed border-blue-300 rounded-xl p-3 shadow-sm cursor-pointer hover:bg-blue-50">
+                        <h4 class="font-bold text-blue-800 text-center uppercase text-sm mb-3 bg-blue-100 py-1 rounded">-ment</h4>
+                        <div class="flex flex-col gap-1 bucket-content"></div>
+                    </div>
+                    <div id="bucket-ness" onclick="trySort('-ness')" class="category-bucket bg-white border-2 border-dashed border-pink-300 rounded-xl p-3 shadow-sm cursor-pointer hover:bg-pink-50">
+                        <h4 class="font-bold text-pink-800 text-center uppercase text-sm mb-3 bg-pink-100 py-1 rounded">-ness</h4>
+                        <div class="flex flex-col gap-1 bucket-content"></div>
+                    </div>
+                    <div id="bucket-ity" onclick="trySort('-ity')" class="category-bucket bg-white border-2 border-dashed border-purple-300 rounded-xl p-3 shadow-sm cursor-pointer hover:bg-purple-50">
+                        <h4 class="font-bold text-purple-800 text-center uppercase text-sm mb-3 bg-purple-100 py-1 rounded">-ity</h4>
+                        <div class="flex flex-col gap-1 bucket-content"></div>
+                    </div>
+                    <div id="bucket-tion" onclick="trySort('-tion')" class="category-bucket bg-white border-2 border-dashed border-emerald-300 rounded-xl p-3 shadow-sm cursor-pointer hover:bg-emerald-50">
+                        <h4 class="font-bold text-emerald-800 text-center uppercase text-sm mb-3 bg-emerald-100 py-1 rounded">-tion/-sion</h4>
+                        <div class="flex flex-col gap-1 bucket-content"></div>
+                    </div>
+                    <div id="bucket-er" onclick="trySort('-er')" class="category-bucket bg-white border-2 border-dashed border-amber-300 rounded-xl p-3 shadow-sm cursor-pointer hover:bg-amber-50">
+                        <h4 class="font-bold text-amber-800 text-center uppercase text-sm mb-3 bg-amber-100 py-1 rounded">-er/-or</h4>
+                        <div class="flex flex-col gap-1 bucket-content"></div>
+                    </div>
+                </div>
+
+                <!-- Productive Task: Everyday Dilemmas -->
+                <h3 class="text-2xl font-black text-indigo-900 mb-4 border-t border-slate-200 pt-8"><i class="fa-solid fa-comments text-rose-500"></i> Real-Life Reactions</h3>
+                <div class="bg-rose-50 border border-rose-200 rounded-2xl p-6 shadow-sm">
+                    <p class="text-slate-800 font-medium mb-6">Read the 3 situations below. Respond to each person by completing the dialogue. <strong>You must change the word in parentheses into a NOUN using a suffix!</strong></p>
+                    
+                    <div class="space-y-6">
+                        <!-- Dilemma 1 -->
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                            <p class="font-bold text-indigo-700 mb-2">👤 Friend:</p>
+                            <p class="text-slate-600 italic bg-slate-50 p-3 rounded mb-3">"I got two job offers, and I don't know which one to take. It's driving me crazy!"</p>
+                            <p class="font-bold text-rose-600 mb-2">🗣️ You:</p>
+                            <div class="flex gap-2 items-center text-slate-700">
+                                "Don't worry. Making a big <input type="text" id="dil1" class="border-b-2 border-slate-300 outline-none focus:border-rose-500 px-2 py-1 w-32" placeholder="(decide)"> is always hard. Take your time."
+                            </div>
+                        </div>
+
+                        <!-- Dilemma 2 -->
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                            <p class="font-bold text-indigo-700 mb-2">👤 Co-worker:</p>
+                            <p class="text-slate-600 italic bg-slate-50 p-3 rounded mb-3">"The boss is giving me three new projects. I can't handle all of this!"</p>
+                            <p class="font-bold text-rose-600 mb-2">🗣️ You:</p>
+                            <div class="flex gap-2 items-center text-slate-700 flex-wrap">
+                                "You should talk to the <input type="text" id="dil2a" class="border-b-2 border-slate-300 outline-none focus:border-rose-500 px-2 py-1 w-28" placeholder="(manage)">. That is too much <input type="text" id="dil2b" class="border-b-2 border-slate-300 outline-none focus:border-rose-500 px-2 py-1 w-32" placeholder="(responsible)"> for one person."
+                            </div>
+                        </div>
+
+                        <!-- Dilemma 3 -->
+                        <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-200">
+                            <p class="font-bold text-indigo-700 mb-2">👤 Sibling:</p>
+                            <p class="text-slate-600 italic bg-slate-50 p-3 rounded mb-3">"I tried to learn the guitar but my fingers hurt and I quit."</p>
+                            <p class="font-bold text-rose-600 mb-2">🗣️ You:</p>
+                            <div class="flex gap-2 items-center text-slate-700 flex-wrap">
+                                "Learning an instrument takes <input type="text" id="dil3a" class="border-b-2 border-slate-300 outline-none focus:border-rose-500 px-2 py-1 w-28" placeholder="(dedicate)">. It requires a lot of <input type="text" id="dil3b" class="border-b-2 border-slate-300 outline-none focus:border-rose-500 px-2 py-1 w-28" placeholder="(hard)"> at first!"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-center">
+                        <button onclick="checkDilemmas()" class="bg-rose-600 hover:bg-rose-500 text-white font-bold py-2 px-8 rounded-full shadow-md transition">Check Dialogues</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 3: AMAZING MINDS (LISTENING) -->
+        <section id="tab3" class="tab-content fade-in">
+            <div class="glass-panel p-8 rounded-3xl">
+                <div class="transition-box">
+                    <h4><i class="fa-solid fa-headphones"></i> Amazing Minds</h4>
+                    <p>We are going to listen to a lecture about two people with incredible, almost impossible abilities. Let's see what makes their brains so unique.</p>
+                </div>
+
+                <div class="bg-indigo-900 rounded-3xl p-10 text-center shadow-2xl mb-10 relative overflow-hidden border-4 border-indigo-500">
+                    <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CgkJPGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz4KPC9zdmc+')]"></div>
+                    <i class="fa-solid fa-volume-high text-6xl text-emerald-400 mb-4 animate-pulse"></i>
+                    <h3 class="text-3xl font-black text-white mb-2">Listen to Audio 1.02</h3>
+                    <p class="text-indigo-200">Your teacher will play the lecture. Keep your ears open for the signposts and the numbers!</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Ex A: Signposts -->
+                    <div class="bg-white rounded-2xl p-6 shadow border border-slate-200">
+                        <h4 class="font-bold text-slate-800 mb-2">A. Recognizing Signposts</h4>
+                        <p class="text-sm text-slate-500 mb-4">Lecturers use specific phrases to guide you. Listen and match the start of the signpost to its ending.</p>
+                        
+                        <div class="space-y-3" id="signpost-container">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                                <span class="sm:w-1/2 bg-slate-100 p-2 text-sm rounded font-medium border border-slate-200">1. Over the...</span>
+                                <select class="sm:w-1/2 p-2 border border-slate-300 rounded text-sm outline-none" onchange="checkSignpost(this, 'next')">
+                                    <option value="">Choose ending...</option>
+                                    <option value="know">probably know</option>
+                                    <option value="next">next few lectures</option>
+                                    <option value="with">begin with</option>
+                                    <option value="to">on to language learning</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                                <span class="sm:w-1/2 bg-slate-100 p-2 text-sm rounded font-medium border border-slate-200">2. To...</span>
+                                <select class="sm:w-1/2 p-2 border border-slate-300 rounded text-sm outline-none" onchange="checkSignpost(this, 'with')">
+                                    <option value="">Choose ending...</option>
+                                    <option value="know">probably know</option>
+                                    <option value="next">next few lectures</option>
+                                    <option value="with">begin with</option>
+                                    <option value="to">on to language learning</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                                <span class="sm:w-1/2 bg-slate-100 p-2 text-sm rounded font-medium border border-slate-200">3. As you...</span>
+                                <select class="sm:w-1/2 p-2 border border-slate-300 rounded text-sm outline-none" onchange="checkSignpost(this, 'know')">
+                                    <option value="">Choose ending...</option>
+                                    <option value="know">probably know</option>
+                                    <option value="next">next few lectures</option>
+                                    <option value="with">begin with</option>
+                                    <option value="to">on to language learning</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+                                <span class="sm:w-1/2 bg-slate-100 p-2 text-sm rounded font-medium border border-slate-200">4. Moving...</span>
+                                <select class="sm:w-1/2 p-2 border border-slate-300 rounded text-sm outline-none" onchange="checkSignpost(this, 'to')">
+                                    <option value="">Choose ending...</option>
+                                    <option value="know">probably know</option>
+                                    <option value="next">next few lectures</option>
+                                    <option value="with">begin with</option>
+                                    <option value="to">on to language learning</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ex B: The Numbers -->
+                    <div class="bg-indigo-50 rounded-2xl p-6 shadow border border-indigo-100">
+                        <h4 class="font-bold text-indigo-900 mb-2">B. The Facts & Numbers</h4>
+                        <p class="text-sm text-indigo-700 mb-4">Listen carefully for the specific numbers mentioned in the lecture. Type them below.</p>
+                        
+                        <ul class="space-y-4 text-sm font-medium text-slate-700">
+                            <li class="flex items-center gap-3">People with perfect pitch: 1 in <input type="text" id="fact1" class="w-24 p-2 text-center border border-slate-300 rounded outline-none focus:border-indigo-500" placeholder="?"></li>
+                            <li class="flex items-center gap-3">Mozart played violin and keyboard at age <input type="text" id="fact2" class="w-16 p-2 text-center border border-slate-300 rounded outline-none focus:border-indigo-500" placeholder="?"></li>
+                            <li class="flex items-center gap-3">Mozart wrote his first symphony at age <input type="text" id="fact3" class="w-16 p-2 text-center border border-slate-300 rounded outline-none focus:border-indigo-500" placeholder="?"></li>
+                            <li class="flex items-center gap-3">Daniel Tammet speaks <input type="text" id="fact4" class="w-16 p-2 text-center border border-slate-300 rounded outline-none focus:border-indigo-500" placeholder="?"> languages.</li>
+                            <li class="flex items-center gap-3">He learned Icelandic in <input type="text" id="fact5" class="w-16 p-2 text-center border border-slate-300 rounded outline-none focus:border-indigo-500" placeholder="?"> week.</li>
+                        </ul>
+                        <div class="mt-6 flex gap-3">
+                            <button onclick="checkFacts()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-6 rounded-full shadow-sm text-sm transition">Verify Numbers</button>
+                            <button onclick="revealFacts()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-2 px-6 rounded-full shadow-sm text-sm transition">Show Answers</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: GRAMMAR -->
+        <section id="tab4" class="tab-content fade-in">
+            <div class="glass-panel p-8 rounded-3xl">
+                <div class="transition-box">
+                    <h4><i class="fa-solid fa-cogs"></i> Expressing Ability</h4>
+                    <p>In the audio, we heard phrases like "he *could* play" and "he *managed to* learn". Why didn't they just use "can" for everything? Let's decode the grammar of abilities.</p>
+                </div>
+
+                <!-- MASSIVE VISUAL GRAMMAR BOX -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden mb-12">
+                    <div class="bg-slate-900 p-4 text-center">
+                        <h3 class="text-2xl font-black text-white tracking-wide">The Timeline of Ability ⏳</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+                        <!-- General Present -->
+                        <div class="p-6 bg-emerald-50/50">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="text-2xl">🟢</span>
+                                <h4 class="text-lg font-bold text-emerald-900 uppercase">General Present</h4>
+                            </div>
+                            <p class="text-sm text-slate-700 mb-4 h-10">Things you know how to do right now.</p>
+                            
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded border-l-4 border-emerald-400 shadow-sm text-sm">
+                                    <span class="font-bold text-emerald-700">can</span> + base verb<br>
+                                    <span class="italic text-slate-500">"I can speak English."</span>
+                                </div>
+                                <div class="bg-white p-3 rounded border-l-4 border-emerald-400 shadow-sm text-sm">
+                                    <span class="font-bold text-emerald-700">am/is/are able to</span> + base verb<br>
+                                    <span class="italic text-slate-500">"She is able to solve the puzzle." (More formal)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- General Past -->
+                        <div class="p-6 bg-blue-50/50">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="text-2xl">⏮️</span>
+                                <h4 class="text-lg font-bold text-blue-900 uppercase">General Past</h4>
+                            </div>
+                            <p class="text-sm text-slate-700 mb-4 h-10">Things you knew how to do in the past.</p>
+                            
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded border-l-4 border-blue-400 shadow-sm text-sm">
+                                    <span class="font-bold text-blue-700">could</span> + base verb<br>
+                                    <span class="italic text-slate-500">"Mozart could play the violin."</span>
+                                </div>
+                                <div class="bg-white p-3 rounded border-l-4 border-blue-400 shadow-sm text-sm">
+                                    <span class="font-bold text-blue-700">was/were able to</span> + base verb<br>
+                                    <span class="italic text-slate-500">"They were able to swim well."</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Specific Difficult Achievement -->
+                        <div class="p-6 bg-amber-50/50 relative">
+                            <div class="absolute -top-3 -right-3 text-3xl">🔥</div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="text-2xl">🏆</span>
+                                <h4 class="text-lg font-bold text-amber-900 uppercase">Difficult Achievement</h4>
+                            </div>
+                            <p class="text-sm text-slate-700 mb-4 h-10">Doing something specific that was hard to achieve. (Do NOT use 'could' for a single successful past event!).</p>
+                            
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded border-l-4 border-amber-400 shadow-sm text-sm">
+                                    <span class="font-bold text-amber-700">manage to</span> + base verb<br>
+                                    <span class="italic text-slate-500">"I managed to finish the marathon."</span>
+                                </div>
+                                <div class="bg-white p-3 rounded border-l-4 border-amber-400 shadow-sm text-sm">
+                                    <span class="font-bold text-amber-700">succeed in</span> + <strong class="text-red-500">verb-ing</strong><br>
+                                    <span class="italic text-slate-500">"He succeeded in learning Icelandic."</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise 1 -->
+                <h3 class="text-2xl font-bold text-slate-800 mb-4"><i class="fa-solid fa-list-check text-indigo-500"></i> Exercise 1: The Form Fixer</h3>
+                <div class="instruction-box">
+                    <h4>Instructions</h4>
+                    <p class="text-sm">Pay close attention to the preposition (to, in) or lack of preposition. Choose the grammatically correct option to complete the 10 sentences.</p>
+                </div>
+                
+                <div class="bg-white p-4 rounded-2xl shadow border border-slate-200 mb-6 flex justify-between items-center max-w-sm mx-auto">
+                    <span class="font-bold text-slate-700">Form Score</span>
+                    <span id="gram1-score" class="font-black text-2xl text-indigo-600">0 / 10</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12" id="gram1-container">
+                    <!-- Populated via JS -->
+                </div>
+
+                <!-- Exercise 2 -->
+                <h3 class="text-2xl font-bold text-slate-800 mb-4 border-t border-slate-200 pt-8"><i class="fa-solid fa-brain text-emerald-500"></i> Exercise 2: Concept Checker</h3>
+                <div class="instruction-box">
+                    <h4>Instructions</h4>
+                    <p class="text-sm">Read the context carefully. Was it a general ability or a specific, difficult achievement? Click the most natural response.</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl shadow border border-slate-200 mb-6 flex justify-between items-center max-w-sm mx-auto">
+                    <span class="font-bold text-slate-700">Concept Score</span>
+                    <span id="gram2-score" class="font-black text-2xl text-emerald-600">0 / 10</span>
+                </div>
+
+                <div class="space-y-4 max-w-4xl mx-auto mb-12" id="gram2-container">
+                    <!-- Populated via JS -->
+                </div>
+
+                <!-- Exercise 3 -->
+                <h3 class="text-2xl font-bold text-slate-800 mb-4 border-t border-slate-200 pt-8"><i class="fa-solid fa-magnifying-glass text-rose-500"></i> Exercise 3: The Error Hunter</h3>
+                <div class="instruction-box">
+                    <h4>Instructions</h4>
+                    <p class="text-sm">Are these sentences grammatically correct? Remember: we DO NOT use 'could' for a single successful achievement in the past. Click 'Correct' or 'Incorrect'.</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl shadow border border-slate-200 mb-6 flex justify-between items-center max-w-sm mx-auto">
+                    <span class="font-bold text-slate-700">Hunter Score</span>
+                    <span id="gram3-score" class="font-black text-2xl text-rose-600">0 / 10</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12" id="gram3-container">
+                    <!-- Populated via JS -->
+                </div>
+
+                <!-- Exercise 4 -->
+                <h3 class="text-2xl font-bold text-slate-800 mb-4 border-t border-slate-200 pt-8"><i class="fa-solid fa-keyboard text-amber-500"></i> Exercise 4: Sentence Builder</h3>
+                <div class="instruction-box">
+                    <h4>Instructions</h4>
+                    <p class="text-sm">Type the missing words (2 or 3 words) to complete the ability phrase. Pay attention to the verb that comes after the blank!</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-2xl shadow border border-slate-200 mb-6 flex justify-between items-center max-w-sm mx-auto">
+                    <span class="font-bold text-slate-700">Builder Score</span>
+                    <span id="gram4-score" class="font-black text-2xl text-amber-600">0 / 10</span>
+                </div>
+
+                <div class="space-y-4 max-w-4xl mx-auto" id="gram4-container">
+                    <!-- Populated via JS -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 5: SPEAKING -->
+        <section id="tab5" class="tab-content fade-in">
+            <div class="glass-panel p-8 rounded-3xl">
+                <div class="transition-box">
+                    <h4><i class="fa-solid fa-microphone-lines"></i> The Unfiltered Podcast</h4>
+                    <p>It's time to put our new grammar to use. Forget boring interviews—we are recording a podcast episode about surviving difficult challenges and achieving the impossible.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <!-- The Template -->
+                    <div class="bg-white rounded-2xl p-6 shadow-lg border border-slate-200">
+                        <h3 class="font-black text-indigo-900 text-xl mb-4 border-b border-slate-100 pb-2">Podcast Prompts 🎙️</h3>
+                        <p class="text-sm text-slate-500 mb-4">Host: Ask your guest these questions. Guest: Answer with real stories (or invent crazy ones!). Use <em>manage to</em>, <em>succeed in</em>, and <em>was able to</em>.</p>
+                        
+                        <div class="space-y-4 text-sm text-slate-700 font-medium">
+                            <div class="bg-indigo-50 p-3 rounded border-l-4 border-indigo-400">
+                                <p class="font-bold text-indigo-800">1. The Struggle</p>
+                                "Tell me about a time you tried something completely new and failed at first."
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded border-l-4 border-indigo-400">
+                                <p class="font-bold text-indigo-800">2. The Breaking Point</p>
+                                "Was there a moment you thought, 'I'm never going to be able to do this'?"
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded border-l-4 border-indigo-400">
+                                <p class="font-bold text-indigo-800">3. The Breakthrough</p>
+                                "How did you finally succeed in getting it right?"
+                            </div>
+                            <div class="bg-indigo-50 p-3 rounded border-l-4 border-indigo-400">
+                                <p class="font-bold text-indigo-800">4. The Reward</p>
+                                "What's something you managed to figure out that makes you feel really smart today?"
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scaffolding & Timer -->
+                    <div class="flex flex-col justify-between">
+                        <div class="bg-rose-50 rounded-2xl p-6 shadow-inner border border-rose-100 mb-6">
+                            <h3 class="font-black text-rose-900 text-lg mb-2">🔧 Repair It! (Confident Communicator)</h3>
+                            <p class="text-sm text-slate-700 mb-3">If you don't understand your podcast guest, DON'T switch to Spanish! Use these to keep the conversation flowing:</p>
+                            <ul class="space-y-2 text-sm font-bold text-rose-800">
+                                <li><i class="fa-solid fa-wrench text-rose-400 mr-2"></i> "Sorry, what was that?"</li>
+                                <li><i class="fa-solid fa-wrench text-rose-400 mr-2"></i> "I'm sorry, I didn't quite catch that."</li>
+                                <li><i class="fa-solid fa-wrench text-rose-400 mr-2"></i> "What do you mean by [word]?"</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-slate-900 rounded-2xl p-6 text-center shadow-xl text-white">
+                            <h3 class="font-bold text-slate-400 uppercase tracking-widest text-sm mb-2">Recording Timer</h3>
+                            <div id="interview-timer-display" class="text-6xl font-black font-mono tracking-tight mb-4 text-emerald-400">08:00</div>
+                            <button onclick="startInterviewTimer()" class="bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold py-3 px-8 rounded-full transition-transform active:scale-95 shadow-[0_4px_0_#047857]">
+                                START RECORDING
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 6: WRAP UP -->
+        <section id="tab6" class="tab-content fade-in">
+            <div class="glass-panel p-8 rounded-3xl text-center max-w-4xl mx-auto">
+                <div class="transition-box text-left">
+                    <h4><i class="fa-solid fa-stopwatch"></i> Wrap-up: Opinion Roulette</h4>
+                    <p>Let's finish the class by giving some quick opinions using our new nouns and ability verbs.</p>
+                </div>
+                
+                <h2 class="text-3xl font-black text-slate-800 mb-6">The 30-Second Hot Seat 🔥</h2>
+                
+                <div class="bg-slate-900 rounded-3xl p-8 shadow-2xl relative overflow-hidden mb-8 border-4 border-indigo-500">
+                    <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CgkJPGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmZmZmYiLz4KPC9zdmc+')]"></div>
+                    
+                    <div class="relative z-10 min-h-[150px] flex items-center justify-center">
+                        <p id="rapid-fire-text" class="text-2xl md:text-3xl font-bold text-white leading-snug">
+                            Ready to spin?
+                        </p>
+                    </div>
+                </div>
+
+                <button onclick="spinRapidFire()" id="rapid-spin-btn" class="bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-400 hover:to-orange-400 text-white font-black text-2xl py-4 px-12 rounded-full shadow-[0_10px_20px_rgba(236,72,153,0.4)] transition-transform active:scale-95 mb-8">
+                    SPIN THE WHEEL! 🎡
+                </button>
+
+                <div class="instruction-box text-left mx-auto max-w-2xl">
+                    <h4><i class="fa-solid fa-bolt"></i> The Rules</h4>
+                    <ul class="list-disc">
+                        <li>Click spin.</li>
+                        <li>When it stops, the teacher will call a student's name.</li>
+                        <li>That student has 30 seconds to answer the question, giving their opinion!</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // --- Core Functions ---
+        function switchTab(tabId) {
+            try {
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                const tabs = ['tab0', 'tab1', 'tab2', 'tab3', 'tab4', 'tab5', 'tab6'];
+                tabs.forEach(id => {
+                    const btn = document.getElementById(`btn-${id}`);
+                    if (btn) btn.className = "px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 text-slate-500 hover:bg-slate-100 whitespace-nowrap";
+                });
+                const target = document.getElementById(tabId);
+                if (target) target.classList.add('active');
+                const activeBtn = document.getElementById(`btn-${tabId}`);
+                if (activeBtn) activeBtn.className = "px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 bg-slate-800 text-white shadow-md whitespace-nowrap";
+            } catch (e) { console.log('switchTab error:', e); }
+        }
+
+        function showToast(msg, type = 'success') {
+            try {
+                const toast = document.getElementById('toast');
+                toast.textContent = msg;
+                toast.className = `toast toast-${type} show`;
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            } catch (e) { console.log(e); }
+        }
+
+        // --- Tab 0 Warm-up Game ---
+        const verbData = [
+            { w: "recognize", t: "state" }, { w: "run", t: "action" },
+            { w: "belong", t: "state" }, { w: "work", t: "action" },
+            { w: "understand", t: "state" }, { w: "type", t: "action" },
+            { w: "like", t: "state" }, { w: "eat", t: "action" },
+            { w: "know", t: "state" }, { w: "build", t: "action" },
+            { w: "prefer", t: "state" }, { w: "jump", t: "action" },
+            { w: "want", t: "state" }, { w: "write", t: "action" },
+            { w: "need", t: "state" }
+        ];
+        
+        let verbQueue = [];
+        let currentVerbObj = null;
+        let verbScore = 0;
+
+        function startVerbGame() {
+            verbQueue = [...verbData].sort(() => Math.random() - 0.5);
+            verbScore = 0;
+            document.getElementById('verb-score').textContent = verbScore;
+            document.getElementById('verb-start-btn').classList.add('hidden');
+            document.getElementById('btn-state').classList.remove('hidden');
+            document.getElementById('btn-action').classList.remove('hidden');
+            nextVerb();
+        }
+
+        function nextVerb() {
+            document.getElementById('verb-count').textContent = verbQueue.length;
+            if (verbQueue.length === 0) {
+                document.getElementById('current-verb').textContent = "🎉 Done!";
+                document.getElementById('btn-state').classList.add('hidden');
+                document.getElementById('btn-action').classList.add('hidden');
+                document.getElementById('baamboozle-reveal').classList.remove('hidden');
+                return;
+            }
+            currentVerbObj = verbQueue.pop();
+            document.getElementById('current-verb').textContent = currentVerbObj.w.toUpperCase();
+        }
+
+        function checkVerb(guessType) {
+            if (!currentVerbObj) return;
+            const verbText = document.getElementById('current-verb');
+            
+            if (guessType === currentVerbObj.t) {
+                verbScore += 10;
+                document.getElementById('verb-score').textContent = verbScore;
+                verbText.classList.add('text-emerald-500');
+                showToast('Correct!', 'success');
+            } else {
+                verbText.classList.add('text-rose-500');
+                showToast(`Incorrect. "${currentVerbObj.w}" is a ${currentVerbObj.t} verb.`, 'error');
+            }
+            
+            setTimeout(() => {
+                verbText.classList.remove('text-emerald-500', 'text-rose-500');
+                nextVerb();
+            }, 600);
+        }
+
+        // --- Timers (Pitch & Interview) ---
+        let pitchTimer = null;
+        let interviewTimer = null;
+
+        function runTimer(displayId, seconds) {
+            let t = seconds;
+            const el = document.getElementById(displayId);
+            el.classList.remove('text-rose-500');
+            el.classList.add('timer-active');
+            
+            return setInterval(() => {
+                t--;
+                const m = Math.floor(t / 60);
+                const s = t % 60;
+                el.textContent = `${m < 10 ? '0' + m : m}:${s < 10 ? '0' + s : s}`;
+                
+                if (t <= 60) el.classList.add('text-rose-500');
+                if (t <= 0) {
+                    el.textContent = "00:00";
+                    el.classList.remove('timer-active');
+                    showToast('⏰ Time is up!', 'info');
+                }
+            }, 1000);
+        }
+
+        function startPitchTimer() {
+            if (pitchTimer) clearInterval(pitchTimer);
+            pitchTimer = runTimer('pitch-timer-display', 600);
+        }
+        function resetPitchTimer() {
+            if (pitchTimer) clearInterval(pitchTimer);
+            document.getElementById('pitch-timer-display').textContent = "10:00";
+            document.getElementById('pitch-timer-display').classList.remove('timer-active', 'text-rose-500');
+        }
+
+        function startInterviewTimer() {
+            if (interviewTimer) clearInterval(interviewTimer);
+            interviewTimer = runTimer('interview-timer-display', 480); // 8 mins
+        }
+
+        // --- Tab 2 Suffix Sorter ---
+        const suffixData = [
+            { w: "achieve", s: "-ment" }, { w: "argue", s: "-ment" }, { w: "develop", s: "-ment" },
+            { w: "entertain", s: "-ment" }, { w: "equip", s: "-ment" }, 
+            { w: "hard", s: "-ness" }, { w: "ill", s: "-ness" }, { w: "kind", s: "-ness" },
+            { w: "sad", s: "-ness" }, { w: "happy", s: "-ness" }, { w: "weak", s: "-ness" },
+            { w: "dark", s: "-ness" },
+            { w: "available", s: "-ity" }, { w: "impossible", s: "-ity" }, { w: "possible", s: "-ity" },
+            { w: "responsible", s: "-ity" }, { w: "able", s: "-ity" }, { w: "flexible", s: "-ity" },
+            { w: "educate", s: "-tion" }, { w: "inform", s: "-tion" }, { w: "decide", s: "-tion" }, { w: "confuse", s: "-tion" },
+            { w: "teach", s: "-er" }, { w: "act", s: "-er" }, { w: "manage", s: "-er" }, { w: "direct", s: "-er" }
+        ]; // Exactly 26 words
+        
+        let selectedWordForSort = null;
+        let sortedCount = 0;
+
+        function initSorter() {
+            const bank = document.getElementById('sort-bank');
+            const shuffled = [...suffixData].sort(() => Math.random() - 0.5);
+            
+            shuffled.forEach((item, index) => {
+                const el = document.createElement('div');
+                el.className = "sortable-item bg-white px-2 py-1 rounded-lg font-bold text-slate-700 shadow-sm border border-slate-300 text-xs";
+                el.textContent = item.w;
+                el.dataset.suffix = item.s;
+                el.onclick = () => selectWord(el);
+                bank.appendChild(el);
+            });
+        }
+
+        function selectWord(element) {
+            // Deselect previous
+            if (selectedWordForSort) {
+                selectedWordForSort.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+            }
+            selectedWordForSort = element;
+            element.classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+        }
+
+        function trySort(targetSuffix) {
+            if (!selectedWordForSort) {
+                showToast('Click a word first!', 'info');
+                return;
+            }
+
+            const correctSuffix = selectedWordForSort.dataset.suffix;
+            if (correctSuffix === targetSuffix) {
+                // Correct match
+                selectedWordForSort.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+                selectedWordForSort.classList.add('bg-slate-100', 'text-slate-500', 'border-dashed', 'cursor-default', 'text-[10px]');
+                selectedWordForSort.onclick = null; // Disable clicking again
+                
+                // Change spelling for display if needed (simple rule application for UI)
+                let nounForm = selectedWordForSort.textContent;
+                if(targetSuffix === '-ness' && nounForm.endsWith('y')) nounForm = nounForm.slice(0, -1) + 'i';
+                if(targetSuffix === '-ity' && nounForm.endsWith('le')) nounForm = nounForm.slice(0, -2) + 'il';
+                if(targetSuffix === '-tion') {
+                    if(nounForm === 'decide') nounForm = 'decision';
+                    else if(nounForm === 'confuse') nounForm = 'confusion';
+                    else if(nounForm.endsWith('e')) nounForm = nounForm.slice(0, -1);
+                }
+                if(targetSuffix === '-er' && nounForm === 'act') { nounForm = 'actor'; targetSuffix = '-or'; }
+                if(targetSuffix === '-er' && nounForm === 'direct') { nounForm = 'director'; targetSuffix = '-or'; }
+                if(targetSuffix === '-er' && nounForm.endsWith('e')) nounForm = nounForm.slice(0, -1);
+
+                nounForm += targetSuffix.replace('-', '').replace('/-sion', '').replace('/-or', '');
+                
+                selectedWordForSort.innerHTML = `<span class="line-through mr-1 opacity-50">${selectedWordForSort.textContent}</span> <span class="text-indigo-700">${nounForm}</span>`;
+
+                // Move to bucket
+                let bucketId = targetSuffix.replace('-', '').replace('/-sion', '').replace('/-or', '');
+                const bucket = document.getElementById(`bucket-${bucketId}`).querySelector('.bucket-content');
+                bucket.appendChild(selectedWordForSort);
+                
+                selectedWordForSort = null;
+                sortedCount++;
+                document.getElementById('sort-score').textContent = `${sortedCount} / 26`;
+                showToast('✅ Correct!', 'success');
+            } else {
+                // Wrong match
+                showToast('❌ Try a different suffix.', 'error');
+                selectedWordForSort.classList.add('wrong-highlight');
+                setTimeout(() => {
+                    if(selectedWordForSort) selectedWordForSort.classList.remove('wrong-highlight');
+                }, 500);
+            }
+        }
+
+        // Dilemmas Check
+        function checkDilemmas() {
+            const answers = {
+                'dil1': ['decision'],
+                'dil2a': ['manager'],
+                'dil2b': ['responsibility'],
+                'dil3a': ['dedication'],
+                'dil3b': ['hardness']
+            };
+            
+            let allCorrect = true;
+            for (let id in answers) {
+                const input = document.getElementById(id);
+                const val = input.value.trim().toLowerCase();
+                input.classList.remove('border-green-500', 'text-green-600', 'border-red-500', 'text-red-600');
+                
+                if (answers[id].includes(val)) {
+                    input.classList.add('border-green-500', 'text-green-600');
+                } else {
+                    input.classList.add('border-red-500', 'text-red-600');
+                    allCorrect = false;
+                }
+            }
+            
+            if (allCorrect) showToast('✅ All dialogues complete!', 'success');
+            else showToast('❌ Check your spelling and suffixes!', 'error');
+        }
+
+        // --- Tab 3 Signposts & Facts ---
+        function checkSignpost(selectEl, correctValue) {
+            selectEl.classList.remove('border-green-500', 'bg-green-50', 'text-green-700', 'border-red-500', 'bg-red-50', 'text-red-700');
+            if (selectEl.value === correctValue) {
+                selectEl.classList.add('border-green-500', 'bg-green-50', 'text-green-700');
+            } else if (selectEl.value !== "") {
+                selectEl.classList.add('border-red-500', 'bg-red-50', 'text-red-700');
+            }
+        }
+
+        const factAnswers = ["10000", "5", "8", "11", "1"]; // based on standard Mozart/Tammet facts usually in this text.
+        
+        function checkFacts() {
+            let correct = 0;
+            for(let i=1; i<=5; i++) {
+                const input = document.getElementById(`fact${i}`);
+                const val = input.value.trim().replace(/,/g, '');
+                const target = factAnswers[i-1];
+                
+                input.classList.remove('border-green-500', 'bg-green-50', 'border-red-500', 'bg-red-50');
+                if (val === target || val.toLowerCase() === "ten thousand" || val.toLowerCase() === "five" || val.toLowerCase() === "eight" || val.toLowerCase() === "eleven" || val.toLowerCase() === "one") {
+                    input.classList.add('border-green-500', 'bg-green-50');
+                    correct++;
+                } else {
+                    input.classList.add('border-red-500', 'bg-red-50');
+                }
+            }
+            if (correct === 5) showToast('✅ All facts correct!', 'success');
+            else showToast(`❌ ${correct}/5 correct. Check the audio again.`, 'error');
+        }
+
+        function revealFacts() {
+            for(let i=1; i<=5; i++) {
+                const input = document.getElementById(`fact${i}`);
+                input.value = factAnswers[i-1];
+                input.classList.remove('border-red-500', 'bg-red-50');
+                input.classList.add('border-green-500', 'bg-green-50');
+            }
+        }
+
+        // --- Tab 4 Grammar Exercises ---
+        const gram1Data = [
+            { q: "1. I finally succeeded ______ finding my keys.", o1: "to find", o2: "in finding", a: 2, exp: "succeed always takes 'in' + verb-ing." },
+            { q: "2. We managed ______ the mountain before dark.", o1: "to climb", o2: "climbing", a: 1, exp: "manage always takes 'to' + infinitive." },
+            { q: "3. Mozart ______ play the piano when he was very young.", o1: "could", o2: "managed", a: 1, exp: "General past ability uses 'could'. ('Managed' requires 'to')." },
+            { q: "4. Are you ______ speak any other languages?", o1: "able to", o2: "could", a: 1, exp: "Present ability. 'Are you could' is grammatically impossible." },
+            { q: "5. She didn't ______ in passing the exam.", o1: "succeed", o2: "manage", a: 1, exp: "'in passing' requires 'succeed'." },
+            { q: "6. I ______ to fix the car myself.", o1: "could", o2: "was able", a: 2, exp: "Requires 'was able' because of the 'to'. ('Could to fix' is wrong)." },
+            { q: "7. ______ you swim when you were five?", o1: "Can", o2: "Could", a: 2, exp: "Past ability question uses 'Could'." },
+            { q: "8. They succeeded ______ the final game.", o1: "in winning", o2: "to win", a: 1, exp: "succeed + in + verb-ing." },
+            { q: "9. I will not be ______ attend the meeting.", o1: "able to", o2: "can", a: 1, exp: "Future ability uses 'will be able to' (cannot use 'will can')." },
+            { q: "10. He managed ______ a job despite the bad economy.", o1: "to get", o2: "getting", a: 1, exp: "manage + to + base verb." }
+        ];
+
+        const gram2Data = [
+            { q: "1. My grandfather was amazing. He ______ speak six languages fluently.", o1: "managed to", o2: "could", a: 2, exp: "General past ability over a lifetime = could." },
+            { q: "2. The test was incredibly difficult, but I ______ pass it.", o1: "managed to", o2: "could", a: 1, exp: "A specific, difficult achievement = managed to." },
+            { q: "3. The fire was spreading quickly, but everyone ______ escape safely.", o1: "was able to", o2: "could", a: 1, exp: "A specific event in the past = was able to (or managed to). We don't use 'could' for specific successful past events." },
+            { q: "4. When I lived in Paris, I ______ see the Eiffel Tower from my window.", o1: "could", o2: "managed to", a: 1, exp: "A general state/ability in the past = could." },
+            { q: "5. After three hours of negotiation, we ______ reaching an agreement.", o1: "succeeded in", o2: "managed to", a: 1, exp: "The grammar 'reaching' (verb-ing) forces us to use 'succeeded in'." },
+            { q: "6. I'm sorry, I ______ hear what you said. Can you repeat it?", o1: "didn't manage", o2: "couldn't", a: 2, exp: "For negative specific events (failed to do something), 'couldn't' is perfectly fine and natural." },
+            { q: "7. Look! I ______ stand on my hands!", o1: "can", o2: "am managing to", a: 1, exp: "General present ability = can." },
+            { q: "8. It took a lot of effort, but she ______ convince her boss to change the rule.", o1: "could", o2: "managed to", a: 2, exp: "Specific difficult achievement = managed to." },
+            { q: "9. I ______ play the guitar well when I was in a band.", o1: "could", o2: "was succeeding in", a: 1, exp: "General past ability = could." },
+            { q: "10. Despite the rain, we ______ having a great picnic.", o1: "managed to", o2: "succeeded in", a: 2, exp: "The verb 'having' (verb-ing) means we must use 'succeeded in'." }
+        ];
+
+        const gram3Data = [
+            { q: "1. I could finish the marathon yesterday.", correct: false, exp: "Incorrect! A single successful past event uses 'managed to' or 'was able to'." },
+            { q: "2. She succeeded in getting the new job.", correct: true, exp: "Correct! Succeeded in + verb-ing for a difficult achievement." },
+            { q: "3. When I was young, I was able to run very fast.", correct: true, exp: "Correct! 'Was able to' can be used for general past ability." },
+            { q: "4. They didn't manage to open the locked door.", correct: true, exp: "Correct! Negative past specific event." },
+            { q: "5. We could found the restaurant after an hour of searching.", correct: false, exp: "Incorrect! Single difficult past event = 'managed to find'. Plus, 'could found' is grammatically wrong." },
+            { q: "6. Are you able speak French?", correct: false, exp: "Incorrect! Missing 'to'. It should be 'Are you able TO speak'." },
+            { q: "7. He couldn't lift the heavy box.", correct: true, exp: "Correct! 'Couldn't' is fine for specific past failures." },
+            { q: "8. I managed finding a parking space.", correct: false, exp: "Incorrect! Manage + to + base verb ('managed to find')." },
+            { q: "9. Will you be able to come to the party?", correct: true, exp: "Correct! Future ability." },
+            { q: "10. She succeeded to win the championship.", correct: false, exp: "Incorrect! Succeeded IN WINNING." }
+        ];
+
+        const gram4Data = [
+            { q: "After fixing the engine, I ____ ____ ____ drive the car again.", a: "was able to" },
+            { q: "He ____ ____ passing the incredibly difficult math test.", a: "succeeded in" },
+            { q: "I lost my map, but I ____ ____ find my way home.", a: "managed to" },
+            { q: "Ten years ago, I ____ run 5 kilometers easily.", a: "could" },
+            { q: "The door was stuck, but eventually we ____ ____ open it.", a: "managed to" },
+            { q: "Did they ____ ____ convincing the manager?", a: "succeed in" },
+            { q: "I am sorry, but I ____ ____ ____ to help you tomorrow.", a: "will not be able" },
+            { q: "Before the accident, he ____ play tennis beautifully.", a: "could" },
+            { q: "She ____ ____ getting a visa after three tries.", a: "succeeded in" },
+            { q: "We missed the bus, but we ____ ____ catch a taxi.", a: "managed to" }
+        ];
+
+        let gram1Answered = new Set();
+        let gram2Answered = new Set();
+        let gram3Answered = new Set();
+        let gram1Score = 0;
+        let gram2Score = 0;
+        let gram3Score = 0;
+        let gram4Score = 0;
+
+        function initGrammar() {
+            // Gram 1
+            const cont1 = document.getElementById('gram1-container');
+            gram1Data.forEach((item, i) => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-50 p-4 rounded-xl border border-slate-200";
+                card.innerHTML = `
+                    <p class="font-medium text-slate-800 mb-3">${item.q}</p>
+                    <div class="flex gap-2" id="g1-btns-${i}">
+                        <button onclick="checkG1(${i}, 1)" class="flex-1 bg-white border border-slate-300 py-2 rounded font-bold text-sm text-slate-600 hover:bg-indigo-50">${item.o1}</button>
+                        <button onclick="checkG1(${i}, 2)" class="flex-1 bg-white border border-slate-300 py-2 rounded font-bold text-sm text-slate-600 hover:bg-indigo-50">${item.o2}</button>
+                    </div>
+                    <p id="g1-exp-${i}" class="text-xs font-semibold mt-2 hidden"></p>
+                `;
+                cont1.appendChild(card);
+            });
+
+            // Gram 2
+            const cont2 = document.getElementById('gram2-container');
+            gram2Data.forEach((item, i) => {
+                const row = document.createElement('div');
+                row.className = "bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4";
+                const questionText = item.q.replace("______", `<span class="inline-block w-24 border-b-2 border-slate-300 mx-2"></span>`);
+                row.innerHTML = `
+                    <div class="flex-grow">
+                        <p class="font-medium text-slate-800 text-sm md:text-base">${questionText}</p>
+                        <p id="g2-exp-${i}" class="text-xs font-semibold mt-1 hidden"></p>
+                    </div>
+                    <div class="flex gap-2 min-w-[200px]" id="g2-btns-${i}">
+                        <button onclick="checkG2(${i}, 1)" class="flex-1 bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold py-2 px-3 rounded hover:bg-emerald-100 transition text-sm">${item.o1}</button>
+                        <button onclick="checkG2(${i}, 2)" class="flex-1 bg-emerald-50 border border-emerald-200 text-emerald-700 font-bold py-2 px-3 rounded hover:bg-emerald-100 transition text-sm">${item.o2}</button>
+                    </div>
+                `;
+                cont2.appendChild(row);
+            });
+
+            // Gram 3 (Error Hunter)
+            const cont3 = document.getElementById('gram3-container');
+            gram3Data.forEach((item, i) => {
+                const card = document.createElement('div');
+                card.className = "bg-rose-50 p-4 rounded-xl border border-rose-200";
+                card.innerHTML = `
+                    <p class="font-medium text-slate-800 mb-3">${item.q}</p>
+                    <div class="flex gap-2" id="g3-btns-${i}">
+                        <button onclick="checkG3(${i}, true)" class="flex-1 bg-white border border-rose-300 py-2 rounded font-bold text-sm text-slate-600 hover:bg-green-50">Correct</button>
+                        <button onclick="checkG3(${i}, false)" class="flex-1 bg-white border border-rose-300 py-2 rounded font-bold text-sm text-slate-600 hover:bg-red-50">Incorrect</button>
+                    </div>
+                    <p id="g3-exp-${i}" class="text-xs font-semibold mt-2 hidden"></p>
+                `;
+                cont3.appendChild(card);
+            });
+
+            // Gram 4 (Sentence Builder)
+            const cont4 = document.getElementById('gram4-container');
+            gram4Data.forEach((item, i) => {
+                const row = document.createElement('div');
+                row.className = "bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4";
+                
+                const qHTML = item.q.replace(/____/g, `<input type="text" id="g4-in-${i}" class="border-b-2 border-amber-300 outline-none focus:border-amber-500 w-24 text-center px-1 font-bold text-amber-700">`);
+                // Simplifying input to just one box for the whole phrase
+                const simplifiedQ = item.q.replace(/____( ____)*/g, `<input type="text" id="g4-in-${i}" class="border-b-2 border-amber-300 outline-none focus:border-amber-500 w-32 text-center px-1 font-bold text-amber-700" placeholder="type here">`);
+
+                row.innerHTML = `
+                    <div class="flex-grow">
+                        <p class="font-medium text-slate-800 text-sm md:text-base">${simplifiedQ}</p>
+                    </div>
+                    <button onclick="checkG4(${i})" class="bg-amber-500 hover:bg-amber-400 text-white font-bold py-2 px-6 rounded shadow-sm text-sm transition whitespace-nowrap">Check</button>
+                `;
+                cont4.appendChild(row);
+            });
+        }
+
+        function checkG1(i, guess) {
+            if (gram1Answered.has(i)) return;
+            gram1Answered.add(i);
+            const item = gram1Data[i];
+            const btns = document.getElementById(`g1-btns-${i}`).querySelectorAll('button');
+            const exp = document.getElementById(`g1-exp-${i}`);
+            exp.classList.remove('hidden');
+            exp.textContent = item.exp;
+
+            if (guess === item.a) {
+                btns[guess - 1].classList.add('correct-highlight');
+                exp.classList.add('text-emerald-600');
+                gram1Score++;
+                document.getElementById('gram1-score').textContent = `${gram1Score} / 10`;
+            } else {
+                btns[guess - 1].classList.add('wrong-highlight');
+                btns[item.a - 1].classList.add('correct-highlight');
+                exp.classList.add('text-rose-600');
+            }
+        }
+
+        function checkG2(i, guess) {
+            if (gram2Answered.has(i)) return;
+            gram2Answered.add(i);
+            const item = gram2Data[i];
+            const btns = document.getElementById(`g2-btns-${i}`).querySelectorAll('button');
+            const exp = document.getElementById(`g2-exp-${i}`);
+            exp.classList.remove('hidden');
+            exp.textContent = item.exp;
+
+            if (guess === item.a) {
+                btns[guess - 1].classList.add('correct-highlight');
+                exp.classList.add('text-emerald-600');
+                gram2Score++;
+                document.getElementById('gram2-score').textContent = `${gram2Score} / 10`;
+            } else {
+                btns[guess - 1].classList.add('wrong-highlight');
+                btns[item.a - 1].classList.add('correct-highlight');
+                exp.classList.add('text-rose-600');
+            }
+        }
+
+        function checkG3(i, guessedCorrect) {
+            if (gram3Answered.has(i)) return;
+            gram3Answered.add(i);
+            const item = gram3Data[i];
+            const btns = document.getElementById(`g3-btns-${i}`).querySelectorAll('button');
+            const exp = document.getElementById(`g3-exp-${i}`);
+            exp.classList.remove('hidden');
+            exp.textContent = item.exp;
+
+            if (guessedCorrect === item.correct) {
+                btns[guessedCorrect ? 0 : 1].classList.add('correct-highlight');
+                exp.classList.add('text-emerald-600');
+                gram3Score++;
+                document.getElementById('gram3-score').textContent = `${gram3Score} / 10`;
+            } else {
+                btns[guessedCorrect ? 0 : 1].classList.add('wrong-highlight');
+                btns[item.correct ? 0 : 1].classList.add('correct-highlight');
+                exp.classList.add('text-rose-600');
+            }
+        }
+
+        function checkG4(i) {
+            const input = document.getElementById(`g4-in-${i}`);
+            if(input.disabled) return; // already got it right
+
+            const userVal = input.value.trim().toLowerCase().replace(/\s+/g, ' ');
+            const targetVal = gram4Data[i].a.toLowerCase();
+
+            input.classList.remove('border-amber-300', 'text-amber-700', 'border-red-500', 'text-red-600');
+            
+            // Allow slight variations for negative
+            let isCorrect = (userVal === targetVal);
+            if(i === 6 && (userVal === "won't be able" || userVal === "will not be able to")) isCorrect = true; 
+
+            if (isCorrect) {
+                input.classList.add('border-green-500', 'text-green-600', 'bg-green-50');
+                input.disabled = true;
+                gram4Score++;
+                document.getElementById('gram4-score').textContent = `${gram4Score} / 10`;
+                showToast('✅ Correct!', 'success');
+            } else {
+                input.classList.add('border-red-500', 'text-red-600');
+                showToast('❌ Try again. Check the preposition!', 'error');
+            }
+        }
+
+        // --- Tab 6 Rapid Fire Spin ---
+        const rapidQuestions = [
+            "What is a great ACHIEVEMENT you had this year?",
+            "What do you think is the most important ABILITY for a leader?",
+            "Have you ever SUCCEEDED IN learning something very difficult?",
+            "What is a RESPONSIBILITY you hate having?",
+            "When you were younger, what COULD you do better than now?",
+            "Tell me about a time you MANAGED TO fix a broken object.",
+            "Do you believe pure HAPPINESS is an impossible state?",
+            "What is a big WEAKNESS of modern technology?",
+            "What is a new skill you are ABLE TO do today that you couldn't do last year?",
+            "Tell me about a terrible ARGUMENT you witnessed or had."
+        ];
+        let rapidInt = null;
+
+        function spinRapidFire() {
+            const textEl = document.getElementById('rapid-fire-text');
+            const btn = document.getElementById('rapid-spin-btn');
+            
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            
+            let spins = 0;
+            clearInterval(rapidInt);
+            
+            rapidInt = setInterval(() => {
+                const randomQ = rapidQuestions[Math.floor(Math.random() * rapidQuestions.length)];
+                textEl.innerHTML = `<span class="text-indigo-300 opacity-70 text-lg">${randomQ}</span>`;
+                spins++;
+                
+                if(spins > 20) {
+                    clearInterval(rapidInt);
+                    const finalQ = rapidQuestions[Math.floor(Math.random() * rapidQuestions.length)];
+                    textEl.innerHTML = `"${finalQ}"`;
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50');
+                }
+            }, 100);
+        }
+
+        // --- Init ---
+        window.onload = function() {
+            try { initSorter(); } catch (e) { console.log('Sorter error:', e); }
+            try { initGrammar(); } catch (e) { console.log('Grammar error:', e); }
+            switchTab('tab0');
+        };
+    </script>
+</body>
+</html>
